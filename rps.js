@@ -172,7 +172,8 @@ function main_menu() {
     let choices = {
         "Rules": rules,
         "Single Player Game": single_player,
-        "Two Player Game": two_player
+        "Two Player Game": two_player,
+        "Q": "Q"
     };
     let choice_list = []
 
@@ -196,8 +197,10 @@ function main_menu() {
         choices[choice]()
     }else if (choice == "Single Player Game"){
         choices[choice]()
-    }else {
+    }else if (choice == "Two Player Gamer") {
         choices[choice]()
+    }else {
+        return;
     }
     
 }
