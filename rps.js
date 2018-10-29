@@ -31,7 +31,7 @@ function rules() {
 function single_player() {
 
     let play_again = ""
-    let player_choice = ""
+    let player1_choice = ""
     let computer_choice = ""
     let random_number = 0
     let player_score = 0
@@ -44,40 +44,40 @@ function single_player() {
         computer_choice = choices[random_number]
         
         do {
-             player_choice = prompt("Choose an item to be from Rock, Paper, or Scissors").toLowerCase().capitalize()
-        }while (choices.includes(player_choice) == false)
+             player1_choice = prompt("Choose an item to be from Rock, Paper, or Scissors").toLowerCase().capitalize()
+        }while (choices.includes(player1_choice) == false)
         
-        if(player_choice == "Rock"){
+        if(player1_choice == "Rock"){
             if(computer_choice == "Rock"){
-                console.log(`Computer chose ${computer_choice}, which ties with your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which ties with Player1's ${player1_choice} `)
                 console.log("No one gets any points")
             }else if(computer_choice == "Paper"){
-                console.log(`Computer chose ${computer_choice}, which covers your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which covers Player1's ${player1_choice} `)
                 computer_score += 1
             }else{
-                console.log(`Computer chose ${computer_choice}, which is smashed by your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which is smashed by Player1's ${player1_choice} `)
                 player_score += 1
             }
-        }else if(player_choice == "Paper"){
+        }else if(player1_choice == "Paper"){
             if(computer_choice == "Paper"){
-                console.log(`Computer chose ${computer_choice}, which ties with your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which ties with Player1's ${player1_choice} `)
                 console.log("No one gets any points")
             }else if(computer_choice == "Scissors"){
-                console.log(`Computer chose ${computer_choice}, which cuts your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which cuts Player1's ${player1_choice} `)
                 computer_score += 1
             }else{
-                console.log(`Computer chose ${computer_choice}, which is covered by your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which is covered by Player1's ${player1_choice} `)
                 player_score += 1
             }
         }else{
             if(computer_choice == "Scissors"){
-                console.log(`Computer chose ${computer_choice}, which ties with your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which ties with Player1's ${player1_choice} `)
                 console.log("No one gets any points")
             }else if(computer_choice == "Rock"){
-                console.log(`Computer chose ${computer_choice}, which smashes your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which smashes Player1's ${player1_choice} `)
                 computer_score += 1
             }else{
-                console.log(`Computer chose ${computer_choice}, which is cut by your ${player_choice} `)
+                console.log(`Computer chose ${computer_choice}, which is cut by Player1's ${player1_choice} `)
                 player_score += 1
             }
         }
@@ -93,10 +93,78 @@ function single_player() {
     }else {
         console.log("No one wins it's a tie 😒")
     }
+
+    return main_menu()
 }
 
 function two_player() {
-    console.log("\nTwo Player")
+    let player1_choice = ""
+    let player2_choice = ""
+    let play_again = ""
+
+    let player1_score = 0
+    let player2_score = 0
+
+    let choices = ["Rock", "Paper", "Scissors"]
+
+    do {
+
+        do {
+            player1_choice = prompt("Choose an item to be from Rock, Paper, or Scissors").toLowerCase().capitalize()
+            console.clear()
+
+            player2_choice = prompt("Choose an item to be from Rock, Paper, or Scissors").toLowerCase().capitalize()
+            console.clear()
+        }while ((choices.includes(player1_choice) && choices.includes(player2_choice)) == false)
+
+        if(player1_choice == "Rock"){
+            if(player2_choice == "Rock"){
+                console.log(`Player2 chose ${player2_choice}, which ties with Player1's ${player1_choice} `)
+                console.log("No one gets any points")
+            }else if(player2_choice == "Paper"){
+                console.log(`Player2 chose ${player2_choice}, which covers Player1's ${player1_choice} `)
+                player2_score += 1
+            }else{
+                console.log(`Player2 chose ${player2_choice}, which is smashed by Player1's ${player1_choice} `)
+                player1_score += 1
+            }
+        }else if(player1_choice == "Paper"){
+            if(player2_choice == "Paper"){
+                console.log(`Player2 chose ${player2_choice}, which ties with Player1's ${player1_choice} `)
+                console.log("No one gets any points")
+            }else if(player2_choice == "Scissors"){
+                console.log(`Player2 chose ${player2_choice}, which cuts Player1's ${player1_choice} `)
+                player2_score += 1
+            }else{
+                console.log(`Player2 chose ${player2_choice}, which is covered by Player1's ${player1_choice} `)
+                player1_score += 1
+            }
+        }else{
+            if(player2_choice == "Scissors"){
+                console.log(`Player2 chose ${player2_choice}, which ties with Player1's ${player1_choice} `)
+                console.log("No one gets any points")
+            }else if(player2_choice == "Rock"){
+                console.log(`Player2 chose ${player2_choice}, which smashes Player1's ${player1_choice} `)
+                player2_score += 1
+            }else{
+                console.log(`Player2 chose ${player2_choice}, which is cut by Player1's ${player1_choice} `)
+                player1_score += 1
+            }
+        }
+        play_again = prompt("Do you want to play again? y/n").toLowerCase().capitalize()
+    }while(play_again[0] != "N")
+
+    console.log(`The final score is Player1: ${player1_score} and Player2: ${player2_score}`)
+
+    if(player1_score > player2_score){
+        console.log("Player1 wins!!!!! 🎉")
+    }else if(player1_score < player2_score){
+        console.log("Player2 wins!!!!! 👏")
+    }else {
+        console.log("No one wins it's a tie 😒")
+    }
+
+    return main_menu()
 }
 
 function main_menu() {
